@@ -2,7 +2,7 @@ import java.text.NumberFormat;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ConverterTest {
+public class UnitConverter {
 	
 	public static void main(String[] args) {
 		Random rand = new Random();
