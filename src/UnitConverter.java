@@ -1,5 +1,4 @@
 import java.text.NumberFormat;
-import java.util.Random;
 import java.util.Scanner;
 
 public class UnitConverter {
