@@ -5,14 +5,9 @@ import java.util.Scanner;
 public class UnitConverter {
 	
 	public static void main(String[] args) {
-		Random rand = new Random();
-		Random rand2 = new Random();
-		Random rand3 = new Random();
 		Scanner scnr = new Scanner(System.in);
 		int converterIndicator;
 		char restartChar;
-		int i;
-		int t;
 		
 		NumberFormat f = NumberFormat.getNumberInstance();
 		f.setGroupingUsed(true);
@@ -20,21 +15,15 @@ public class UnitConverter {
 		f.setMinimumFractionDigits(1);
 		
 		restartChar = 'y';
-		for (t = 0; t <= 10; t++) {
 	while (restartChar == 'y') {
-		
-		for (i = 1; i <= 10; i++) {
-			System.out.println("Test : " + i);
-			System.out.println();
 			System.out.println("1. Area          2. Length");
 			System.out.println("3. Temperature   4. Volume");
 			System.out.println("5. Mass          6. Speed");
 		
 			System.out.print("Select a unit to begin conversion: ");
-		// converterIndicator = scnr.nextInt(); FIX ME ///////////////////////////////////
-		converterIndicator = 1;
+		converterIndicator = scnr.nextInt();
 		
-		// Area Converter Start
+		// ******************************************* Area Converter Start *******************************************
 	  if (converterIndicator == 1) {
 		    double userValue;
 			double convertedValue;
@@ -46,13 +35,11 @@ public class UnitConverter {
 			System.out.println("3. Meters Squared         4. Feet Squared");
 			System.out.println("5. Acres                  6. Ares");
 			System.out.println("7. Hectares");
-			// initialUnit = scnr.nextInt(); FIX ME /////////////////////////////////
-			initialUnit = rand.nextInt(7) + 1;
+			initialUnit = scnr.nextInt();
 			System.out.println();
 			
 			System.out.print("Enter Area: ");
-			// userValue = scnr.nextDouble(); FIX ME ////////////////////////////////
-			userValue = rand3.nextDouble(1000) + 1;
+			userValue = scnr.nextDouble();
 			System.out.println();
 			
 			System.out.println("Select Converted Area Unit: ");
@@ -60,8 +47,7 @@ public class UnitConverter {
 			System.out.println("3. Meters Squared         4. Feet Squared");
 			System.out.println("5. Acres                  6. Ares");
 			System.out.println("7. Hectares");
-			// conversionUnit = scnr.nextInt(); FIX ME /////////////////////////////////
-			conversionUnit = rand2.nextInt(7) + 1;
+			conversionUnit = scnr.nextInt();
 			System.out.println();
 			
 		  // CmSqrd If/Else Branches
@@ -337,8 +323,8 @@ public class UnitConverter {
 		
 	  }	  // Area Converter End
 	
-	      /*/ Length Converter Start
-	    else if (converterIndicator == 2) {
+	      // ******************************************* Length Converter Start *******************************************
+	    /*else if (converterIndicator == 2) {
 			 double userValue;
 			 double convertedValue;
 			 int    initialUnit;
@@ -352,14 +338,15 @@ public class UnitConverter {
 			 System.out.println("9. Nautical Miles 10. Mils");
 			 initialUnit = scnr.nextInt();
 				
-			 System.out.print("Enter Area: ");
+			 System.out.print("Enter Length: ");
 			 userValue = scnr.nextDouble();
 				
 			 System.out.println("Select Converted Area Unit: ");
-			 System.out.println("1. Centimeters Squared    2. Inches Squared");
-			 System.out.println("3. Meters Squared         4. Feet Squared");
-			 System.out.println("5. Acres                  6. Ares");
-			 System.out.println("7. Hectares");
+			 System.out.println("1. Millimeters    2.  Centimeters");
+			 System.out.println("3. Inches         4.  Feet ");
+			 System.out.println("5. Meters         6.  Kilometers");
+			 System.out.println("7. Yards          8.  Miles");
+			 System.out.println("9. Nautical Miles 10. Mils");
 			 conversionUnit = scnr.nextInt();
 				
 			  // CmSqrd If/Else Branches
@@ -374,9 +361,10 @@ public class UnitConverter {
 				   convertedValue = CmSqrd.cmSqrdToMeterSqrd(userValue);
 				   System.out.printf("%.3f Centimeters Squared is %.3f Meters Squared.", userValue, convertedValue);
 			   }
-			  }   /*/ //Length Converter End
+			  }
+			}   *///Length Converter End
 	
-		  // Temperature Converter Start
+		  // ******************************************* Temperature Converter Start *******************************************
 	  else if (converterIndicator == 3) {	
 		double userTemp;
 		double convertedTemp;
@@ -448,33 +436,32 @@ public class UnitConverter {
 		
 	}   // Temperature Converter End
 	
-	    // Volume Converter Start
+	    // ******************************************* Volume Converter Start *******************************************
 	  else if (converterIndicator == 4) {
 		
 	  } // Volume Converter End
 	
-	    // Mass Converter Start
+	    // ******************************************* Mass Converter Start *******************************************
 	  else if (converterIndicator == 5) {
 		
 	  } // Mass Converter End
 		
-	    // Speed Converter Start
+	    // ******************************************* Speed Converter Start *******************************************
 	  else if (converterIndicator == 6) {
 		
 	  } // Speed Converter End
-		/*
+
 		System.out.println();
 		System.out.println();
 		System.out.print("Make Another Conversion? 'y' or 'n' : ");
-		// restartChar = scnr.next().charAt(0); FIX ME ////////////////////////////////
+		restartChar = scnr.next().charAt(0);
 		restartChar = 'y';
-		*/
+
 	  System.out.println();
 	  System.out.println();
-		} // DELETE ME AFTER TEST
 		break;
 	} // End of While Loop
-	}	// End of For Loop
+	scnr.close();
   }   // Main Method End Brace
 
 }     // ConverterTest Class End Brace
