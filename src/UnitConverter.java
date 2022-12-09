@@ -2,10 +2,55 @@ import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class UnitConverter {
+
+	public static void printUnitOptions(int converterIndicator) {
+		switch(converterIndicator){
+			case 1:
+				System.out.println("1. Centimeters Squared	2. Inches Squared");
+				System.out.println("3. Meters Squared	4. Feet Squared");
+				System.out.println("5. Acres 		6. Ares");
+				System.out.println("7. Hectares");
+				break;
+			case 2:
+				System.out.println("1. Centimeters		2. Inches");
+				System.out.println("3. Millimeters		4. Meters");
+				System.out.println("5. Kilometers		6. Feet");
+				System.out.println("7. Yards				8. Miles");
+				System.out.println("9. Nautical Miles	10. Mils");
+				break;	
+			case 3:
+				System.out.println("1. Celsius	2. Fahrenheit");
+				System.out.println("3. Kelvin");
+				break;
+			case 4:
+				System.out.println("1. US Gallons		2. Liters");
+				System.out.println("3. UK Gallons		4. Milliliters");
+				System.out.println("5. Cubic Centimeters 6. Cubic Inches");
+				System.out.println("7. Cubic Meters		7. Cubic Feet");
+				break;
+			case 5:
+				System.out.println("1. Pounds	2. Kilograms");
+				System.out.println("3. Grams		4. Ounces");
+				System.out.println("5. Tons		6. UK Tons");
+				System.out.println("7. US Tons");
+				break;
+			case 6:
+				System.out.println("1. Meters per Second			2. Meters per Hour");
+				System.out.println("3. Kilometers per Second		4. Kilometers per Hour");
+				System.out.println("5. Inches per Second			6. Inches per Hour");
+				System.out.println("7. Feet per Second			8. Feet per Hour");
+				System.out.println("9. Miles per Second			10. Miles per Hour");
+				System.out.println("11. Knots");
+				break;
+		}
+	}
 	
 	public static void main(String[] args) {
 		Scanner scnr = new Scanner(System.in);
 		int converterIndicator;
+		int initialUnit;
+		int conversionType;
+		double initialValue;
 		char restartChar;
 		
 		NumberFormat f = NumberFormat.getNumberInstance();
@@ -22,445 +67,120 @@ public class UnitConverter {
 			System.out.print("Select a unit to begin conversion: ");
 		converterIndicator = scnr.nextInt();
 		
-		// ******************************************* Area Converter Start *******************************************
-	  if (converterIndicator == 1) {
-		    double userValue;
-			double convertedValue;
-			int    initialUnit;
-			int    conversionUnit;
+		switch(converterIndicator) {
+//******************************************* Area Converter *******************************************		
+			case 1:
+				System.out.println("Select initial unit: ");
+				printUnitOptions(converterIndicator);
+				System.out.println("Initial Unit Type: ");
+				initialUnit = scnr.nextInt();
+
+				System.out.println("Enter area to convert: ");
+				initialValue = scnr.nextDouble();
+
+				if(initialUnit == 1) {
+					System.out.println("Select conversion unit: ");
+					printUnitOptions(converterIndicator);	
+					System.out.println("Conversion Unit: ");
+					conversionType = scnr.nextInt();
+
+					switch(conversionType) {
+						case 1:
+							System.out.printf("%f centimeters squared is %f centimeters squared.",initialValue);
+							break;
+						case 2:
+							System.out.println(initialValue + "centimeters squared is " +CmSqrd.cmSqrdToInchSqrd(initialValue) + " inches squared.");
+							break;
+						case 3:
+							System.out.println(initialValue + "centimeters squared is " +CmSqrd.cmSqrdToMeterSqrd(initialValue) + " meters squared.");
+							break;
+						case 4:
+							System.out.println(initialValue + "centimeters squared is " +CmSqrd.cmSqrdToFeetSqrd(initialValue) + " feet squared.");
+							break;
+						case 5:
+							System.out.println(initialValue + "centimeters squared is " +CmSqrd.cmSqrdToAcres(initialValue) + " acres.");
+							break;
+						case 6:
+							System.out.println(initialValue + "centimeters squared is " +CmSqrd.cmSqrdToAres(initialValue) + " ares.");
+							break;
+						case 7:
+							System.out.println(initialValue + "centimeters squared is " +CmSqrd.cmSqrdToHectares(initialValue) + " hectares.");
+							break;
+					}
+
+				} else if(initialUnit == 2) {
+					System.out.println("Select conversion unit: ");
+					printUnitOptions(converterIndicator);	
+					System.out.println("Conversion Unit: ");
+					conversionType = scnr.nextInt();
+
+					switch(conversionType) {
+						case 1:
+							System.out.println(initialValue + "inches squared is " +InchesSqrd.inSqrdToCmSqrd(initialValue) + " centimeters squared.");
+							break;
+						case 2:
+							System.out.printf("%f inches squared is %f inches squared.",initialValue);
+							break;
+						case 3:
+							System.out.println(initialValue + "inches squared is " +InchesSqrd.inSqrdToMeterSqrd(initialValue) + " meters squared.");
+							break;
+						case 4:
+							System.out.println(initialValue + "inches squared is " +InchesSqrd.inSqrdToFeetSqrd(initialValue) + " feet squared.");
+							break;
+						case 5:
+							System.out.println(initialValue + "inches squared is " +InchesSqrd.inSqrdToAcres(initialValue) + " acres.");
+							break;
+						case 6:
+							System.out.println(initialValue + "inches squared is " +InchesSqrd.inSqrdToAres(initialValue) + " ares.");
+							break;
+						case 7:
+							System.out.println(initialValue + "inches squared is " +InchesSqrd.inSqrdToHectares(initialValue) + " hectares.");
+							break;
+					}
+
+				} else if(initialUnit == 3) {
+
+				} else if(initialUnit == 4) {
+
+				} else if(initialUnit == 5){
+
+				} else if (initialUnit == 6){
+
+				} else {
+
+				}
+				break;			
+//******************************************* Length Converter *******************************************			
+			case 2:
+
+				break;
+//******************************************* Temperature Converter *******************************************
+			case 3:
+
+				break;
+//******************************************* Volume Converter *******************************************
+			case 4:
+
+				break;
+//******************************************* Mass Converter *******************************************
+			case 5:
+
+				break;
+//******************************************* Speed Converter *******************************************
+			case 6:
 			
-			System.out.println("Select Area Unit: ");
-			System.out.println("1. Centimeters Squared    2. Inches Squared");
-			System.out.println("3. Meters Squared         4. Feet Squared");
-			System.out.println("5. Acres                  6. Ares");
-			System.out.println("7. Hectares");
-			initialUnit = scnr.nextInt();
-			System.out.println();
-			
-			System.out.print("Enter Area: ");
-			userValue = scnr.nextDouble();
-			System.out.println();
-			
-			System.out.println("Select Converted Area Unit: ");
-			System.out.println("1. Centimeters Squared    2. Inches Squared");
-			System.out.println("3. Meters Squared         4. Feet Squared");
-			System.out.println("5. Acres                  6. Ares");
-			System.out.println("7. Hectares");
-			conversionUnit = scnr.nextInt();
-			System.out.println();
-			
-		  // CmSqrd If/Else Branches
-		  if (initialUnit == 1) {
-		   if (conversionUnit == 2) {
-			   CmSqrd.cmSqrdToInchSqrd(userValue);
-			   convertedValue = CmSqrd.cmSqrdToInchSqrd(userValue);
-			   System.out.printf("%f Centimeters Squared is %f Inches Squared.", userValue, convertedValue);
-		   }
-		   else if (conversionUnit == 3) {
-			   CmSqrd.cmSqrdToMeterSqrd(userValue);
-			   convertedValue = CmSqrd.cmSqrdToMeterSqrd(userValue);
-			   System.out.printf("%.f Centimeters Squared is %.f Meters Squared.", userValue, convertedValue);
-		   }
-		   else if (conversionUnit == 4) {
-			   CmSqrd.cmSqrdToFeetSqrd(userValue);
-			   convertedValue = CmSqrd.cmSqrdToFeetSqrd(userValue);
-			   System.out.printf("%.f Centimeters Squared is %.f Feet Squared.", userValue, convertedValue);
-		   }
-		   else if (conversionUnit == 5) {
-			   CmSqrd.cmSqrdToAcres(userValue);
-			   convertedValue = CmSqrd.cmSqrdToAcres(userValue);
-			   System.out.printf("%.f Centimeters Squared is %.f Acres.", userValue, convertedValue);
-		   }
-		   else if (conversionUnit == 6) {
-			   CmSqrd.cmSqrdToAres(userValue);
-			   convertedValue = CmSqrd.cmSqrdToAres(userValue);
-			   System.out.printf("%.f Centimeters Squared is %.f Ares.", userValue, convertedValue);
-		   }
-		   else if (conversionUnit == 7) {
-			   CmSqrd.cmSqrdToHectares(userValue);
-			   convertedValue = CmSqrd.cmSqrdToHectares(userValue);
-			   System.out.printf("%.f Centimeters Squared is %.f Hectares.", userValue, convertedValue);
-		   }
-		   
-		   else {
-			   System.out.printf("%.f Centimeters Squared is %.f Centimeters Squared.", userValue, userValue);
-		   }
-		  }
-			
-		  // Inches Squared If/Else Branches
-		  else if (initialUnit == 2) {
-			  if (conversionUnit == 1) {
-				   InchesSqrd.inSqrdToCmSqrd(userValue);
-				   convertedValue = InchesSqrd.inSqrdToCmSqrd(userValue);
-				   System.out.printf("%.3f Inches Squared is %.3f Centimeters Squared.", userValue, convertedValue);
-			  }
-			  else if (conversionUnit == 3) {
-				   InchesSqrd.inSqrdToMeterSqrd(userValue);
-				   convertedValue = InchesSqrd.inSqrdToMeterSqrd(userValue);
-				   System.out.printf("%.3f Inches Squared is %.3f Meters Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 4) {
-				   InchesSqrd.inSqrdToFeetSqrd(userValue);
-				   convertedValue = InchesSqrd.inSqrdToFeetSqrd(userValue);
-				   System.out.printf("%.3f Inches Squared is %.3f Feet Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 5) {
-				   InchesSqrd.inSqrdToAcres(userValue);
-				   convertedValue = InchesSqrd.inSqrdToAcres(userValue);
-				   System.out.printf("%.3f Inches Squared is %.3f Acres.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 6) {
-				   InchesSqrd.inSqrdToAres(userValue);
-				   convertedValue = InchesSqrd.inSqrdToAres(userValue);
-				   System.out.printf("%.3f Inches Squared is %.3f Ares.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 7) {
-				   InchesSqrd.inSqrdToHectares(userValue);
-				   convertedValue = InchesSqrd.inSqrdToHectares(userValue);
-				   System.out.printf("%.3f Inches Squared is %.3f Hectares.", userValue, convertedValue);
-			   }
-			   
-			   else {
-				   System.out.printf("%.3f Inches Squared is %.3f Inches Squared.", userValue, userValue);
-			   }
-		   
-		  }
-			
-		  // Meters Squared If/Else Branches
-		  else if (initialUnit == 3) {
-			  if (conversionUnit == 1) {
-				   MetersSqrd.meterSqrdToCmSqrd(userValue);
-				   convertedValue = MetersSqrd.meterSqrdToCmSqrd(userValue);
-				   System.out.printf("%.3f Meters Squared is %.3f Centimeters Squared.", userValue, convertedValue);
-			   }
-			  else if (conversionUnit == 2) {
-				   MetersSqrd.meterSqrdToInchSqrd(userValue);
-				   convertedValue = MetersSqrd.meterSqrdToInchSqrd(userValue);
-				   System.out.printf("%.3f Meters Squared is %.3f Inches Squared.", userValue, convertedValue);
-			   }
-			  else if (conversionUnit == 4) {
-				   MetersSqrd.meterSqrdToFeetSqrd(userValue);
-				   convertedValue = MetersSqrd.meterSqrdToFeetSqrd(userValue);
-				   System.out.printf("%.3f Meters Squared is %.3f Feet Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 5) {
-				   MetersSqrd.meterSqrdToAcres(userValue);
-				   convertedValue = MetersSqrd.meterSqrdToAcres(userValue);
-				   System.out.printf("%.3f Meters Squared is %.3f Acres.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 6) {
-				   MetersSqrd.meterSqrdToAres(userValue);
-				   convertedValue = MetersSqrd.meterSqrdToAres(userValue);
-				   System.out.printf("%.3f Meters Squared is %.3f Ares.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 7) {
-				   MetersSqrd.meterSqrdToHectares(userValue);
-				   convertedValue = MetersSqrd.meterSqrdToHectares(userValue);
-				   System.out.printf("%.3f Meters Squared is %.3f Hectares.", userValue, convertedValue);
-			   }
-			   
-			   else {
-				   System.out.printf("%.3f Meters Squared is %.3f Meters Squared.", userValue, userValue);
-			   }
-		   
-		  }
-		  
-		  // Feet If/Else Branches
-		  else if (initialUnit == 4) {
-			  if (conversionUnit == 1) {
-				   FeetSqrd.feetSqrdToCmSqrd(userValue);
-				   convertedValue = FeetSqrd.feetSqrdToCmSqrd(userValue);
-				   System.out.printf("%.3f Feet Squared is %.3f Centimeters Squared.", userValue, convertedValue);
-			  }
-			  else if (conversionUnit == 2) {
-				   FeetSqrd.feetSqrdToInSqrd(userValue);
-				   convertedValue = FeetSqrd.feetSqrdToInSqrd(userValue);
-				   System.out.printf("%.3f Feet Squared is %.3f Inches Squared.", userValue, convertedValue);
-			   }
-			  else if (conversionUnit == 3) {
-				   FeetSqrd.feetSqrdToMeterSqrd(userValue);
-				   convertedValue = FeetSqrd.feetSqrdToMeterSqrd(userValue);
-				   System.out.printf("%.3f Feet Squared is %.3f Meters Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 5) {
-				   FeetSqrd.feetSqrdToAcres(userValue);
-				   convertedValue = FeetSqrd.feetSqrdToAcres(userValue);
-				   System.out.printf("%.3f Feet Squared is %.3f Acres.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 6) {
-				   FeetSqrd.feetSqrdToAres(userValue);
-				   convertedValue = FeetSqrd.feetSqrdToAres(userValue);
-				   System.out.printf("%.3f Feet Squared is %.3f Ares.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 7) {
-				   FeetSqrd.feetSqrdToHectares(userValue);
-				   convertedValue = FeetSqrd.feetSqrdToHectares(userValue);
-				   System.out.printf("%.3f Feet Squared is %.3f Hectares.", userValue, convertedValue);
-			   }
-			   
-			   else {
-				   System.out.printf("%.3f Feet Squared is %.3f Feet Squared.", userValue, userValue);
-			   }
-		   
-		  }
-		  
-		  // Acres If/Else Branches
-		  else if (initialUnit == 5) {
-			  if (conversionUnit == 1) {
-				   Acres.acresToCmSqrd(userValue);
-				   convertedValue = Acres.acresToCmSqrd(userValue);
-				   System.out.printf("%.3f Acres is %.3f Centimeters Squared.", userValue, convertedValue);
-			  }
-			  else if (conversionUnit == 2) {
-				   Acres.acresToInchSqrd(userValue);
-				   convertedValue = Acres.acresToInchSqrd(userValue);
-				   System.out.printf("%.3f Acres is %.3f Inches Squared.", userValue, convertedValue);
-			   }
-			  else if (conversionUnit == 3) {
-				   Acres.acresToMeterSqrd(userValue);
-				   convertedValue = Acres.acresToMeterSqrd(userValue);
-				   System.out.printf("%.3f Acres is %.3f Meters Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 4) {
-				   Acres.acresToFeetSqrd(userValue);
-				   convertedValue = Acres.acresToFeetSqrd(userValue);
-				   System.out.printf("%.3f Acres is %.3f Feet Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 6) {
-				   Acres.acresToAres(userValue);
-				   convertedValue = Acres.acresToAres(userValue);
-				   System.out.printf("%.3f Acres is %.3f Ares.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 7) {
-				   Acres.acresToHectares(userValue);
-				   convertedValue = Acres.acresToHectares(userValue);
-				   System.out.printf("%.3f Acres is %.3f Hectares.", userValue, convertedValue);
-			   }
-			   
-			   else {
-				   System.out.printf("%.3f Acres is %.3f Acres.", userValue, userValue);
-			   }
-		   
-		  }
-		  
-		// Ares If/Else Branches
-		  else if (initialUnit == 6) {
-			  if (conversionUnit == 1) {
-				   Ares.aresToCmSqrd(userValue);
-				   convertedValue = Ares.aresToCmSqrd(userValue);
-				   System.out.printf("%.3f Ares is %.3f Centimeters Squared.", userValue, convertedValue);
-			  }
-			  else if (conversionUnit == 2) {
-				   Ares.aresToInSqrd(userValue);
-				   convertedValue = Ares.aresToInSqrd(userValue);
-				   System.out.printf("%.3f Ares is %.3f Inches Squared.", userValue, convertedValue);
-			   }
-			  else if (conversionUnit == 3) {
-				   Ares.aresToMeterSqrd(userValue);
-				   convertedValue = Ares.aresToMeterSqrd(userValue);
-				   System.out.printf("%.3f Ares is %.3f Meters Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 4) {
-				   Ares.aresToFeetSqrd(userValue);
-				   convertedValue = Ares.aresToFeetSqrd(userValue);
-				   System.out.printf("%.3f Ares is %.3f Feet Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 5) {
-				   Ares.aresToAcres(userValue);
-				   convertedValue = Ares.aresToAcres(userValue);
-				   System.out.printf("%.3f Ares is %.3f Acres.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 7) {
-				   Ares.aresToHectares(userValue);
-				   convertedValue = Ares.aresToHectares(userValue);
-				   System.out.printf("%.3f Ares is %.3f Hectares.", userValue, convertedValue);
-			   }
-			   
-			   else {
-				   System.out.printf("%.3f Ares is %.3f Ares.", userValue, userValue);
-			   }
-		   
-		  }
-		  
-		  // Hectares If/Else Branches
-		  else if (initialUnit == 7) {
-			  if (conversionUnit == 1) {
-				   Hectares.hectaresToCmSqrd(userValue);
-				   convertedValue = Hectares.hectaresToCmSqrd(userValue);
-				   System.out.printf("%.3f Hectares is %.3f Centimeters Squared.", userValue, convertedValue);
-			  }
-			  else if (conversionUnit == 2) {
-				   Hectares.hectaresToInSqrd(userValue);
-				   convertedValue = Hectares.hectaresToInSqrd(userValue);
-				   System.out.printf("%.3f Hectares is %.3f Inches Squared.", userValue, convertedValue);
-			   }
-			  else if (conversionUnit == 3) {
-				   Hectares.hectaresToMeterSqrd(userValue);
-				   convertedValue = Hectares.hectaresToMeterSqrd(userValue);
-				   System.out.printf("%.3f Hectares is %.3f Meters Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 4) {
-				   Hectares.hectaresToFeetSqrd(userValue);
-				   convertedValue = Hectares.hectaresToFeetSqrd(userValue);
-				   System.out.printf("%.3f Hectares is %.3f Feet Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 5) {
-				   Hectares.hectaresToAcres(userValue);
-				   convertedValue = Hectares.hectaresToAcres(userValue);
-				   System.out.printf("%.3f Hectares is %.3f Acres.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 6) {
-				   Hectares.hectaresToAres(userValue);
-				   convertedValue = Hectares.hectaresToAres(userValue);
-				   System.out.printf("%.3f Hectares is %.3f Ares.", userValue, convertedValue);
-			   }			   
-			   else {
-				   System.out.printf("%.3f Hectares is %.3f Hectares.", userValue, userValue);
-			   }
-		   
-		  }
-		
-	  }	  // Area Converter End
-	
-	      // ******************************************* Length Converter Start *******************************************
-	    /*else if (converterIndicator == 2) {
-			 double userValue;
-			 double convertedValue;
-			 int    initialUnit;
-			 int    conversionUnit;
-				
-			 System.out.println("Select Length Unit: ");
-			 System.out.println("1. Millimeters    2.  Centimeters");
-			 System.out.println("3. Inches         4.  Feet ");
-			 System.out.println("5. Meters         6.  Kilometers");
-			 System.out.println("7. Yards          8.  Miles");
-			 System.out.println("9. Nautical Miles 10. Mils");
-			 initialUnit = scnr.nextInt();
-				
-			 System.out.print("Enter Length: ");
-			 userValue = scnr.nextDouble();
-				
-			 System.out.println("Select Converted Area Unit: ");
-			 System.out.println("1. Millimeters    2.  Centimeters");
-			 System.out.println("3. Inches         4.  Feet ");
-			 System.out.println("5. Meters         6.  Kilometers");
-			 System.out.println("7. Yards          8.  Miles");
-			 System.out.println("9. Nautical Miles 10. Mils");
-			 conversionUnit = scnr.nextInt();
-				
-			  // CmSqrd If/Else Branches
-			  if (initialUnit == 1) {
-			   if (conversionUnit == 2) {
-				   CmSqrd.cmSqrdToInchSqrd(userValue);
-				   convertedValue = CmSqrd.cmSqrdToInchSqrd(userValue);
-				   System.out.printf("%.3f Centimeters Squared is %.3f Inches Squared.", userValue, convertedValue);
-			   }
-			   else if (conversionUnit == 3) {
-				   CmSqrd.cmSqrdToMeterSqrd(userValue);
-				   convertedValue = CmSqrd.cmSqrdToMeterSqrd(userValue);
-				   System.out.printf("%.3f Centimeters Squared is %.3f Meters Squared.", userValue, convertedValue);
-			   }
-			  }
-			}   *///Length Converter End
-	
-		  // ******************************************* Temperature Converter Start *******************************************
-	  else if (converterIndicator == 3) {	
-		double userTemp;
-		double convertedTemp;
-		int temp1Unit;
-		int temp2Unit;
-		
-		System.out.println("Select Temperature Unit: ");
-		System.out.println("1. Celsius   2. Fahrenheit   3. Kelvin");
-		temp1Unit = scnr.nextInt();
-		
-		System.out.print("Enter 1st Temperature: ");
-		userTemp = scnr.nextDouble();
-		
-		System.out.println("Select Converted Temperature Unit: ");
-		System.out.println("1. Celsius   2. Fahrenheit   3. Kelvin");
-		temp2Unit = scnr.nextInt();
-		
-		// Celsius If/Else Branches
-	  if (temp1Unit == 1) {
-	   if (temp2Unit == 2) {
-		Celsius.celsiusToFahrenheit(userTemp);
-		convertedTemp = Celsius.celsiusToFahrenheit(userTemp);
-		System.out.printf("%.2f degrees Celsius is %.2f degrees Fahrenheit.", userTemp, convertedTemp);
-	   }
-	   else if (temp2Unit == 3) {
-		Celsius.celsiusToKelvin(userTemp);
-		convertedTemp = Celsius.celsiusToKelvin(userTemp);
-		System.out.printf("%.2f degrees Celsius is %.2f degrees Fahrenheit.", userTemp, convertedTemp);
-	   }
-	   else {
-		System.out.printf("%.2f degrees Celsius is %.2f degrees Celsius.", userTemp, userTemp);
-	   }
-	  }
-		
-		// Fahrenheit If/Else Branches
-	  else if (temp1Unit == 2) {
-	   if (temp2Unit == 1) {
-		Fahrenheit.fahrenheitToCelsius(userTemp);
-		convertedTemp = Fahrenheit.fahrenheitToCelsius(userTemp);
-		System.out.printf("%.2f degrees Fahrenheit is %.2f degrees Celsius.", userTemp, convertedTemp);
-	   }
-	   else if (temp2Unit == 3) {
-		Fahrenheit.fahrenheitToKelvin(userTemp);
-		convertedTemp = Fahrenheit.fahrenheitToKelvin(userTemp);
-		System.out.printf("%.2f degrees Fahrenheit is %.2f degrees Kelvin.", userTemp, convertedTemp);
-	   }
-	   else {
-		System.out.printf("%.2f degrees Fahrenheit is %.2f degrees Fahrenheit.", userTemp, userTemp);
-	   }
-	   
-	  }
-		
-		// Kelvin If/Else Branches
-	  if (temp1Unit == 3) {
-	   if (temp2Unit == 1) {
-		Kelvin.kelvinToCelsius(userTemp);
-		convertedTemp = Kelvin.kelvinToCelsius(userTemp);
-		System.out.printf("%.2f degrees Kelvin is %.2f degrees Celsius.", userTemp, convertedTemp);
-	   }
-	   else if (temp2Unit == 2) {
-		Kelvin.kelvinToFahrenheit(userTemp);
-		convertedTemp = Kelvin.kelvinToFahrenheit(userTemp);
-		System.out.printf("%.2f degrees Kelvin is %.2f degrees Fahrenheit.", userTemp, convertedTemp);
-	   }
-	   else {
-		System.out.printf("%.2f degrees Kelvin is %.2f degrees Kelvin.", userTemp, userTemp);
-	   }
-	  }
-		
-	}   // Temperature Converter End
-	
-	    // ******************************************* Volume Converter Start *******************************************
-	  else if (converterIndicator == 4) {
-		
-	  } // Volume Converter End
-	
-	    // ******************************************* Mass Converter Start *******************************************
-	  else if (converterIndicator == 5) {
-		
-	  } // Mass Converter End
-		
-	    // ******************************************* Speed Converter Start *******************************************
-	  else if (converterIndicator == 6) {
-		
-	  } // Speed Converter End
+				break;
+		}
 
 		System.out.println();
 		System.out.println();
 		System.out.print("Make Another Conversion? 'y' or 'n' : ");
 		restartChar = scnr.next().charAt(0);
-		restartChar = 'y';
-
-	  System.out.println();
-	  System.out.println();
-		break;
+		
+	  	System.out.println();
+	  	System.out.println();
 	} // End of While Loop
-	scnr.close();
+		scnr.close();
   }   // Main Method End Brace
 
 }     // ConverterTest Class End Brace

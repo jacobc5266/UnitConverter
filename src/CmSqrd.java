@@ -1,5 +1,5 @@
 
-public class CmSqrd extends ConverterTest {
+public class CmSqrd extends UnitConverter {
 	// Method to convert CmSqrd to acres
 			public static double cmSqrdToAcres(double userValue) {
 		        double cmSqrd2Acres;
